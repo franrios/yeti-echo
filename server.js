@@ -14,12 +14,12 @@ app.post('/', (req, res) => {
   if (!echo) res.json({error: 'Missing echo inside body'})
 
   setTimeout(() => {
-    const { url, body } = echo
-    axios.post("http://localhost:8080", body)
+    const { url } = echo
+    axios.get(url)
       .then(r => console.log(r.data))
  }, 2000) // three minutes
 
   res.json({success: 1, message: 'Echo scheduled'})
 })
 
-app.listen(443)
+app.listen(8080)
